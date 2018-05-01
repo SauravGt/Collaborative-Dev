@@ -1,0 +1,105 @@
+<style>
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+</style>
+<head> Valve test Scheduled for every 10 seconds </head>
+<form id="localStorageTest" method="post" action="">
+    <label>Valve:</label>
+    <input type="text" name="valveid" id="valveid" class="stored" value="" />
+
+    <label>Test:</label>
+    <input type="text" name="test(Pass/Fail)" id="test" class="stored" value="" />
+	
+	<label>Date Tested:</label>
+    <input type="text" name="date" id="date" class="stored" value="" />
+
+    <label>Message:</label>
+    <input type="text" name="message" id="message" class="stored" value="" />
+
+    <input type="submit" class="demo-button" value="Submit" />
+</form>
+<script>
+setTimeout(function(){alert("Valve test Schedule")},10000);
+</script>
+</html>
+<script type="text/javascript">
+$(document).ready(function () {
+    function init() {
+        if (localStorage["valveid"]) {
+            $('#valveid').val(localStorage["valveid"]);
+        }
+        if (localStorage["test"]) {
+            $('#test').val(localStorage["test"]);
+			
+			
+			if (localStorage["date"]) {
+            $('#date').val(localStorage["date"]);
+        }
+			
+			
+			
+        }
+        if (localStorage["message"]) {
+            $('#message').val(localStorage["message"]);
+        }
+		
+		
+		
+    }
+    init();
+});
+
+$('.stored').keyup(function () {
+    localStorage[$(this).attr('valveid')] = $(this).val();
+});
+
+
+$('.stored').keyup(function () {
+    localStorage[$(this).attr('test')] = $(this).val();
+});
+
+
+$('.stored').keyup(function () {
+    localStorage[$(this).attr('date')] = $(this).val();
+});
+
+
+
+$('.stored').keyup(function () {
+    localStorage[$(this).attr('message')] = $(this).val();
+});
+
+
+
+$('#localStorageTest').submit(function() {
+    localStorage.clear();
+});
+</script>
